@@ -120,17 +120,50 @@ function flattenArray(arrays) {
 // ex. 'Dormitory' === 'dirty room##'
 
 function isAnagram(str1, str2) {
-
+return formatStr(str1) === formatStr(str2);
  }
+
+
+ //Helper function//
+//Helper function helps take a part of the problem you are trying to solve gives you a portion of the solution to work with so you dont have to fit all the logic into one function makes it easier to manage.
+
+function formatStr(str) {
+  return str
+  //The replace() method returns a new string with some or all matches of a pattern replaced by a replacement. The pattern can be a string or a RegExp, and the replacement can be a string or a function called for each match. If pattern is a string, only the first occurrence will be replaced. 
+  .replace(/[^\w]/g, '')
+  .toLowerCase()
+  .split('')
+  .sort()
+  .join('')
+}
+
 
 // CHALLENGE 5: LETTER CHANGES
 // Change every letter of the string to the one that follows it and capitalize the vowels
 // Z should turn to A
 // ex. 'hello there' === 'Ifmmp UIfsf'
 
-function letterChanges(str) { }
+function letterChanges(str) {
+  // gi in a regexp stand for global insensitive which means it will work on upper or lower case and applies to any string even outside of the function.
+let newStr = str.toLowerCase().replace(/[a-z]/gi, function(char) {
+if(char === 'z' || char === 'Z') {
+  return 'a';
+} else {
+  //The charCodeAt() method returns an integer between 0 and 65535 representing the UTF-16 code unit at the given index.
+  //The static String.fromCharCode() method returns a string created from the specified sequence of UTF-16 code units. 
+  return String.fromCharCode(char.charCodeAt() + 1);
+}
+});
+
+newStr = newStr.replace(/a|e|i|o|u/gi, function(vowel) {
+  vowel.toUpperCase()
+});
+
+return newStr;
+
+ }
 
 // Call Function
-const output = isAnagram('elbow', 'below');
+const output = letterChanges('Hello there');
 
 console.log(output);
