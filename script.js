@@ -36,38 +36,92 @@ function longestWord(sen) {
 // ex. chunkArray([1, 2, 3, 4, 5, 6, 7], 2) === [[1, 2],[3, 4],[5, 6],[7]]
 
 function chunkArray(arr, len) {
+  //SOLUTION 1//
+
   //Initialize chunked array//
-  const chunkedArr = [];
+  // const chunkedArr = [];
 
-  //Set Index//
-  let i = 0;
+  // //Set Index//
+  // let i = 0;
 
-  //Loop while index is less than the array length//
-  while (i < arr.length) {
-    //Slice out from the index to the index + the chunk length and push on to the chunked array//
-    //The push() method adds one or more elements to the end of an array and returns the new length of the array.
-    //The slice() method returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) 
-    //where start and end represent the index of items in that array. The original array will not be modified. 
-    chunkedArr.push(arr.slice(i, i + len));
-    // Increment by chunk length
-    i += len;
-  }
+  // //Loop while index is less than the array length//
+  // while (i < arr.length) {
+  //   //Slice out from the index to the index + the chunk length and push on to the chunked array//
+  //   //The push() method adds one or more elements to the end of an array and returns the new length of the array.
+  //   //The slice() method returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) 
+  //   //where start and end represent the index of items in that array. The original array will not be modified. 
+  //   chunkedArr.push(arr.slice(i, i + len));
+  //   // Increment by chunk length
+  //   i += len;
+  // }
 
-  return chunkedArr;
+  // return chunkedArr;
+
+
+  //SOLUTION 2//
+
+  //Initialize chunked array//
+  //   const chunkedArr = [];
+
+  //   //Loop through array//
+  //   arr.forEach(function(val) {
+  //     //Get last element//
+  //     const last = chunkedArr[chunkedArr.length - 1];
+
+  //     //Check if last element is the last element if last elements length is equal to the chunk length
+  //     if(!last || last.length === len) {
+  //       chunkedArr.push([val]);
+  //     } else {
+  //       last.push(val)
+  //     }
+  //   });
+  // return chunkedArr;
+
 }
 
 // CHALLENGE 3: FLATTEN ARRAY
 // Take an array of arrays and flatten to a single array
 // ex. [[1, 2], [3, 4], [5, 6], [7]] = [1, 2, 3, 4, 5, 6, 7]
 
-function flattenArray(arrays) { }
+function flattenArray(arrays) {
+  //SOLUTION 1//
+
+  //  The reduce() method executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
+  //The first time that the callback is run there is no "return value of the previous calculation". If supplied, an initial value may be used in its place. Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
+  //Perhaps the easiest-to-understand case for reduce() is to return the sum of all the elements in an array:
+  // return arrays.reduce(function (a, b) {
+  //   // The concat() method is used to merge two or more arrays. This method does not change the existing arrays, but instead returns a new array. 
+  //   return a.concat(b);
+  // });
+
+
+  //SOLUTION 2//
+
+  //The apply() method calls a function with a given this value, and arguments provided as an array (or an array-like object).
+  // return [].concat.apply([], arrays);
+
+
+  //SOLUTION 3//
+
+//Spread syntax (...) allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected. 
+// function add(a, b, c) {
+//   return a + b + c;
+// }
+// const arr = [1, 2, 3];
+
+//SOLUTION 3b version//
+
+// return [].concat(...arrays);
+}
 
 // CHALLENGE 4: ANAGRAM
 // Return true if anagram and false if not
 // ex. 'elbow' === 'below'
 // ex. 'Dormitory' === 'dirty room##'
 
-function isAnagram(str1, str2) { }
+function isAnagram(str1, str2) {
+
+ }
 
 // CHALLENGE 5: LETTER CHANGES
 // Change every letter of the string to the one that follows it and capitalize the vowels
@@ -77,6 +131,6 @@ function isAnagram(str1, str2) { }
 function letterChanges(str) { }
 
 // Call Function
-const output = chunkArray([1, 2, 3, 4, 5, 6, 7], 2);
+const output = isAnagram('elbow', 'below');
 
 console.log(output);
